@@ -28,6 +28,11 @@ List<StyleRule> get globalStyles => [
   css('h1, h2, h3, p, ul').styles(padding: .zero, margin: .zero),
   css('h1, h2, h3').styles(fontFamily: Fonts.heading, fontWeight: .w700, raw: {'text-wrap': 'balance'}),
   css('ul').styles(listStyle: .none),
+  // Arabic: letter-spacing breaks letter joining.
+  css('html[lang="ar"] .hero h1').styles(raw: {'line-height': '1.3', 'font-size': 'clamp(28px, 4.6vw, 54px)'}),
+  css('html[lang="ar"] h2, html[lang="ar"] h3').styles(raw: {'line-height': '1.3'}),
+  css('html[lang="ar"] *').styles(raw: {'letter-spacing': 'normal !important'}),
+  css('html[dir="rtl"] .rtl-flip').styles(raw: {'transform': 'scaleX(-1)'}),
   css('a').styles(color: .inherit, textDecoration: .none, raw: {'transition': 'color .15s, border-color .15s'}),
   css('a:focus-visible').styles(
     radius: .circular(6.px),

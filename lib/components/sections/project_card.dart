@@ -4,14 +4,18 @@ import 'package:jaspr/jaspr.dart';
 import 'package:portfolio/theme/tokens.dart';
 import 'package:portfolio/data/models/project.dart';
 import 'package:portfolio/data/screenshots.dart';
+import 'package:portfolio/l10n/app_locale.dart';
+import 'package:portfolio/l10n/strings.dart';
 
 class ProjectCard extends StatelessComponent {
-  const ProjectCard({required this.project, super.key});
+  const ProjectCard({required this.project, required this.locale, super.key});
 
   final Project project;
+  final AppLocale locale;
 
   @override
   Component build(BuildContext context) {
+    final s = Strings.of(locale);
     final screenshots = screenshotsFor(project.slug);
     final links = [
       for (final store in project.stores)
@@ -21,19 +25,19 @@ class ProjectCard extends StatelessComponent {
       div(classes: 'project-card__media', [
         if (screenshots.isNotEmpty)
           for (var i = 0; i < screenshots.length; i++)
-            img(src: screenshots[i], alt: '${project.name} screenshot ${i + 1}', attributes: {'loading': 'lazy'})
+            img(src: screenshots[i], alt: s.screenshotAlt(project.name, i + 1), attributes: {'loading': 'lazy'})
         else
           for (var i = 0; i < 3; i++)
-            div(classes: 'project-card__placeholder mono', [if (i == 1) const Component.text('Screenshots soon')]),
+            div(classes: 'project-card__placeholder mono', [if (i == 1) Component.text(s.screenshotsSoon)]),
         if (links.isNotEmpty) ...[
           div(classes: 'project-card__overlay', [
-            span(classes: 'mono', [const Component.text('Open in')]),
+            span(classes: 'mono', [Component.text(s.openIn)]),
             for (final store in links)
               a(
                 classes: 'project-card__store-btn',
                 href: project.urlFor(store)!,
                 target: Target.blank,
-                attributes: {'rel': 'noopener', 'aria-label': '${project.name} on ${store.label}'},
+                attributes: {'rel': 'noopener', 'aria-label': s.storeAria(project.name, store.label)},
                 [Component.text('${store.label} ↗')],
               ),
           ]),
@@ -45,7 +49,7 @@ class ProjectCard extends StatelessComponent {
         p(classes: 'project-card__desc', [Component.text(project.description)]),
         ul(
           classes: 'chips',
-          attributes: {'aria-label': 'Stack'},
+          attributes: {'aria-label': s.stackLabel},
           [
             for (final item in project.stack) li(classes: 'chip', [Component.text(item)]),
           ],

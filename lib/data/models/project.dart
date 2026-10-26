@@ -28,6 +28,17 @@ class Project {
   final String? playStoreUrl;
   final String? appStoreUrl;
 
+  Project translated({required String tag, required String description}) => Project(
+    slug: slug,
+    name: name,
+    tag: tag,
+    description: description,
+    stack: stack,
+    stores: stores,
+    playStoreUrl: playStoreUrl,
+    appStoreUrl: appStoreUrl,
+  );
+
   String? urlFor(Store store) => switch (store) {
     Store.googlePlay => playStoreUrl,
     Store.appStore => appStoreUrl,

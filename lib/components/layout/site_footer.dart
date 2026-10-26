@@ -1,17 +1,20 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
-import 'package:portfolio/data/content/site_content.dart';
+import 'package:portfolio/l10n/app_locale.dart';
+import 'package:portfolio/l10n/strings.dart';
 import 'package:portfolio/theme/tokens.dart';
 
 class SiteFooter extends StatelessComponent {
-  const SiteFooter({super.key});
+  const SiteFooter({required this.locale, super.key});
+
+  final AppLocale locale;
 
   @override
   Component build(BuildContext context) {
     return footer(classes: 'site-footer', [
       div(classes: 'container site-footer__inner', [
-        p([const Component.text(footerCopyright)]),
+        p([Component.text(Strings.of(locale).footerCopyright)]),
       ]),
     ]);
   }

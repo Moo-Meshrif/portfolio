@@ -5,8 +5,10 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/server.dart';
+import 'package:portfolio/components/layout/back_to_top.dart' as _back_to_top;
 import 'package:portfolio/components/layout/site_footer.dart' as _site_footer;
 import 'package:portfolio/components/layout/site_header.dart' as _site_header;
+import 'package:portfolio/components/sections/contact.dart' as _contact;
 import 'package:portfolio/components/sections/experience_item.dart'
     as _experience_item;
 import 'package:portfolio/components/sections/hero.dart' as _hero;
@@ -39,8 +41,10 @@ import 'package:portfolio/pages/home_page.dart' as _home_page;
 /// ```
 ServerOptions get defaultServerOptions => ServerOptions(
   styles: () => [
+    ..._back_to_top.BackToTop.styles,
     ..._site_footer.SiteFooter.styles,
     ..._site_header.SiteHeader.styles,
+    ..._contact.Contact.styles,
     ..._experience_item.ExperienceItem.styles,
     ..._hero.Hero.styles,
     ..._package_card.PackageCard.styles,

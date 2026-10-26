@@ -1,4 +1,5 @@
 import 'package:portfolio/data/models/job.dart';
+import 'package:portfolio/l10n/app_locale.dart';
 
 const jobs = <Job>[
   Job(
@@ -37,3 +38,68 @@ const education = Education(
   school: 'Zagazig University, Egypt',
   languages: 'Arabic (native), English (professional)',
 );
+
+const _jobsAr = <Job>[
+  Job(
+    dates: 'أغسطس 2025 – حتى الآن',
+    role: 'Senior Flutter Developer',
+    company: 'Spark Systems',
+    location: 'الشيخ زايد، الجيزة',
+    highlights: [
+      'مسؤول عن تصميم وتطوير البنية المعمارية لتطبيقات Flutter الجديدة، '
+          'باستخدام Clean Architecture وFeature-First Structure، '
+          'مع BLoC/Cubit وDependency Injection.',
+
+      'تطبيق اختبارات Unit وBLoC وWidget وIntegration '
+          'وربطها بـ CI لاكتشاف المشكلات مبكرًا '
+          'والحفاظ على استقرار التطبيقات قبل إصدارها.',
+
+      'تطوير قوالب جاهزة باستخدام Mason لإنشاء مكونات '
+          'الميزات الجديدة تلقائيًا، مما يسرّع عملية التطوير '
+          'ويساعد على توحيد تنظيم الكود بين المشاريع.',
+
+      'توظيف أدوات الذكاء الاصطناعي مثل Claude Code '
+          'في تحسين سير العمل، من خلال إعداد Rules وSkills '
+          'تساعد على الالتزام بمعايير الفريق '
+          'وتحسين جودة مراجعة الكود.',
+    ],
+  ),
+  Job(
+    dates: 'مارس 2022 – أغسطس 2025',
+    role: 'Flutter Developer',
+    company: 'IT PLUS – Programming Solutions',
+    location: 'الشيخ زايد، الجيزة',
+    highlights: [
+      'المشاركة في تطوير وإطلاق العديد من تطبيقات الموبايل '
+          'على Google Play وApp Store، '
+          'والتي يستخدمها آلاف المستخدمين.',
+
+      'قيادة عملية إعادة بناء تطبيق Itop باستخدام Flutter '
+          'بدلًا من Native، مع الحفاظ على جميع الوظائف '
+          'والمميزات الأساسية للتطبيق.',
+
+      'إعداد أنظمة CI/CD باستخدام Fastlane '
+          'لأتمتة عمليات بناء ونشر تطبيقات iOS وAndroid، '
+          'وتقليل الخطوات اليدوية المطلوبة لكل إصدار.',
+
+      'تطوير نظام لتتبع مواقع السائقين في الخلفية باستخدام GPS، '
+          'مع تحديث البيانات لحظيًا بين السائقين والتجار '
+          'ضمن منصة للخدمات اللوجستية.',
+
+      'المساهمة في اعتماد Clean Architecture وBLoC '
+          'كمعايير أساسية لتطوير المشاريع، '
+          'إلى جانب تحديث مشاريع كبيرة لدعم Null Safety.',
+    ],
+  ),
+];
+
+const _educationAr = Education(
+  dates: '2015 – 2020',
+  degree: 'بكالوريوس هندسة الإلكترونيات والاتصالات',
+  school: 'جامعة الزقازيق، مصر',
+  languages: 'العربية (اللغة الأم) · الإنجليزية (مستوى مهني)',
+);
+
+List<Job> jobsFor(AppLocale locale) => locale == AppLocale.ar ? _jobsAr : jobs;
+
+Education educationFor(AppLocale locale) => locale == AppLocale.ar ? _educationAr : education;

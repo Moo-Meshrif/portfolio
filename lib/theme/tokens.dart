@@ -21,13 +21,16 @@ abstract final class Palette {
 }
 
 abstract final class Fonts {
-  static const heading = FontFamily.list([FontFamily('Bricolage Grotesque'), FontFamilies.sansSerif]);
-  static const body = FontFamily.list([FontFamily('Inter'), FontFamilies.sansSerif]);
-  static const mono = FontFamily.list([FontFamily('JetBrains Mono'), FontFamilies.monospace]);
+  // Latin glyphs come from the first family; Arabic glyphs fall through to Cairo.
+  static const _arabic = FontFamily('Cairo');
+  static const heading = FontFamily.list([FontFamily('Bricolage Grotesque'), _arabic, FontFamilies.sansSerif]);
+  static const body = FontFamily.list([FontFamily('Inter'), _arabic, FontFamilies.sansSerif]);
+  static const mono = FontFamily.list([FontFamily('JetBrains Mono'), _arabic, FontFamilies.monospace]);
 
   static const googleFontsUrl =
       'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700'
-      '&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap';
+      '&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500'
+      '&family=Cairo:wght@400;500;600;700&display=swap';
 }
 
 abstract final class Layout {

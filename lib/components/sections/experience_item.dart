@@ -56,15 +56,16 @@ class ExperienceItem extends StatelessComponent {
     css('.experience-item__list').styles(display: .flex, flexDirection: .column, gap: .all(12.px)),
     css('.experience-item__list li').styles(
       position: const Position.relative(),
-      padding: .only(left: 22.px),
       color: Palette.textSecondary,
+      raw: {'padding-inline-start': '22px'},
     ),
     css('.experience-item__list li::before').styles(
       content: '""',
-      position: Position.absolute(left: Unit.zero, top: 0.7.em),
+      position: Position.absolute(top: 0.7.em),
       width: 8.px,
       height: 1.px,
       backgroundColor: Palette.accent,
+      raw: {'inset-inline-start': '0'},
     ),
     css('.experience-item__languages').styles(margin: .zero, color: Palette.textMuted, textTransform: .none),
   ];

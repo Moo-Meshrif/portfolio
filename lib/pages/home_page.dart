@@ -4,7 +4,10 @@ import 'package:jaspr/jaspr.dart';
 import 'package:portfolio/theme/tokens.dart';
 import 'package:portfolio/components/shared/section_heading.dart';
 import 'package:portfolio/data/content/experience_content.dart';
+import 'package:portfolio/l10n/app_locale.dart';
+import 'package:portfolio/l10n/strings.dart';
 import 'package:portfolio/components/sections/experience_item.dart';
+import 'package:portfolio/components/sections/contact.dart';
 import 'package:portfolio/components/sections/hero.dart';
 import 'package:portfolio/components/sections/stats_bar.dart';
 import 'package:portfolio/components/sections/package_card.dart';
@@ -13,34 +16,38 @@ import 'package:portfolio/components/sections/project_card.dart';
 import 'package:portfolio/data/content/projects_content.dart';
 import 'package:portfolio/components/sections/skill_group_card.dart';
 import 'package:portfolio/data/content/skills_content.dart';
+import 'package:portfolio/components/layout/back_to_top.dart';
 import 'package:portfolio/components/layout/site_footer.dart';
 import 'package:portfolio/components/layout/site_header.dart';
 
 class HomePage extends StatelessComponent {
-  const HomePage({super.key});
+  const HomePage({required this.locale, super.key});
+
+  final AppLocale locale;
 
   @override
   Component build(BuildContext context) {
+    final s = Strings.of(locale);
     return Component.fragment([
-      const SiteHeader(),
+      SiteHeader(locale: locale),
       main_([
-        const Hero(),
-        const StatsBar(),
+        Hero(locale: locale),
+        StatsBar(locale: locale),
         _section(
           id: 'work',
           index: '01',
-          title: 'Selected work',
-          subtitle: workSubtitle,
+          title: s.workTitle,
+          subtitle: s.workSubtitle,
           gridClass: 'grid grid--projects',
-          children: [for (final project in projects) ProjectCard(project: project)],
+          children: [for (final project in projectsFor(locale)) ProjectCard(project: project, locale: locale)],
         ),
         _section(
           id: 'open-source',
           index: '02',
-          title: 'Open source',
-          subtitle: openSourceSubtitle,
+          title: s.openSourceTitle,
+          subtitle: s.openSourceSubtitle,
           gridClass: 'grid grid--packages',
-          children: [for (final package in packages) PackageCard(package: package)],
+          children: [for (final package in packagesFor(locale)) PackageCard(package: package)],
         ),
         section(
           id: 'experience',
@@ -48,10 +55,10 @@ class HomePage extends StatelessComponent {
           attributes: {'aria-labelledby': 'experience-heading'},
           [
             div(classes: 'container', [
-              const SectionHeading(id: 'experience-heading', index: '03', title: 'Experience'),
+              SectionHeading(id: 'experience-heading', index: '03', title: s.experienceTitle),
               div(classes: 'experience', [
-                for (final job in jobs) ExperienceItem.job(job: job),
-                const ExperienceItem.education(education: education),
+                for (final job in jobsFor(locale)) ExperienceItem.job(job: job),
+                ExperienceItem.education(education: educationFor(locale)),
               ]),
             ]),
           ],
@@ -59,12 +66,14 @@ class HomePage extends StatelessComponent {
         _section(
           id: 'skills',
           index: '04',
-          title: 'Skills',
+          title: s.skillsTitle,
           gridClass: 'grid grid--skills',
-          children: [for (final group in skillGroups) SkillGroupCard(group: group)],
+          children: [for (final group in skillGroupsFor(locale)) SkillGroupCard(group: group)],
         ),
+        Contact(locale: locale),
       ]),
-      const SiteFooter(),
+      SiteFooter(locale: locale),
+      BackToTop(locale: locale),
     ]);
   }
 
@@ -92,7 +101,6 @@ class HomePage extends StatelessComponent {
   @css
   static List<StyleRule> get styles => [
     // Last section needs room to scroll its heading to the top of the viewport.
-    css('#skills').styles(minHeight: 100.vh),
     css('.grid').styles(display: .grid, gap: .all(Layout.gridGap)),
     css('.grid--projects').styles(raw: {'grid-template-columns': 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))'}),
     css('.grid--packages').styles(raw: {'grid-template-columns': 'repeat(auto-fill, minmax(min(100%, 380px), 1fr))'}),

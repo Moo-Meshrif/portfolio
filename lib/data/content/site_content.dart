@@ -1,9 +1,4 @@
-const siteTitle = 'Mohamed Meshrif — Senior Flutter Engineer';
-const siteName = 'Mohamed Meshrif';
 const monogram = 'MM';
-const siteDescription =
-    'Nearly 5 years taking marketplace, social, super-app, logistics and news apps from architecture to '
-    'App Store and Google Play, for clients in Egypt, Saudi Arabia and Iraq.';
 
 const email = 'm.meshrif77@gmail.com';
 const emailUrl = 'mailto:$email';
@@ -13,11 +8,6 @@ const cvUrl = 'cv.pdf';
 const siteUrl = 'https://moo-meshrif.github.io/portfolio/';
 const ogImageUrl = '${siteUrl}images/og.png';
 
-const navLinks = <({String label, String href})>[
-  (label: 'Work', href: '#work'),
-  (label: 'Open source', href: '#open-source'),
-  (label: 'Experience', href: '#experience'),
-  (label: 'Skills', href: '#skills'),
-];
-
-const footerCopyright = '© 2026 Mohamed Meshrif';
+const phoneDisplay = '+20 10 2710 6902';
+const phoneUrl = 'tel:+201027106902';
+const linkedinHandle = 'in/mohamed-meshrif';

@@ -3,16 +3,19 @@ import 'package:jaspr/jaspr.dart';
 
 import 'package:portfolio/theme/tokens.dart';
 import 'package:portfolio/data/content/hero_content.dart';
+import 'package:portfolio/l10n/app_locale.dart';
 
 class StatsBar extends StatelessComponent {
-  const StatsBar({super.key});
+  const StatsBar({required this.locale, super.key});
+
+  final AppLocale locale;
 
   @override
   Component build(BuildContext context) {
     return div(classes: 'stats', [
       div(classes: 'container', [
         ul(classes: 'stats__grid', [
-          for (final stat in stats)
+          for (final stat in statsFor(locale))
             li(classes: 'stats__item', [
               span(classes: 'stats__value', [Component.text(stat.value)]),
               span(classes: 'stats__label', [Component.text(stat.label)]),
@@ -33,8 +36,11 @@ class StatsBar extends StatelessComponent {
       display: .grid,
       padding: .symmetric(vertical: 48.px),
       gap: .all(32.px),
-      raw: {'grid-template-columns': 'repeat(auto-fit, minmax(200px, 1fr))'},
+      raw: {'grid-template-columns': 'repeat(4, minmax(0, 1fr))'},
     ),
+    css.media(MediaQuery.screen(maxWidth: 899.px), [
+      css('.stats__grid').styles(raw: {'grid-template-columns': 'repeat(2, minmax(0, 1fr))'}),
+    ]),
     css('.stats__item').styles(display: .flex, flexDirection: .column, gap: .all(8.px)),
     css('.stats__value').styles(
       fontFamily: Fonts.heading,

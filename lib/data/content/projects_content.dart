@@ -1,6 +1,5 @@
 import 'package:portfolio/data/models/project.dart';
-
-const workSubtitle = "A few highlights from the apps I've shipped to Google Play and the App Store.";
+import 'package:portfolio/l10n/app_locale.dart';
 
 const projects = <Project>[
   Project(
@@ -82,3 +81,76 @@ const projects = <Project>[
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.cinderella.app',
   ),
 ];
+
+const _arTexts = <String, ({String tag, String description})>{
+  'itop': (
+    tag: 'تواصل اجتماعي · خدمات إلكترونية',
+    description:
+        'قدت عملية إعادة تطوير التطبيق بالكامل باستخدام Flutter بدلًا من Native، '
+        'لتوحيد تطوير نسختي Android وiOS ضمن Codebase واحدة. '
+        'يشمل التطبيق تسجيل الرسائل الصوتية، وتشغيل الفيديوهات، '
+        'والتحديثات اللحظية للمحتوى، إلى جانب منصة للخدمات داخل التطبيق.',
+  ),
+
+  'sela-super-app': (
+    tag: 'تطبيق متعدد الخدمات · السعودية',
+    description:
+        'شاركت في تطوير التطبيق وإضافة خدمات جديدة تشمل التواصل الاجتماعي '
+        'والمشتريات والخدمات اللوجستية، مع الحفاظ على استقرار '
+        'الوظائف الحالية وتجربة المستخدم. '
+        'كما توليت إدارة عمليات بناء ونشر الإصدارات باستخدام Fastlane.',
+  ),
+
+  'sela-fhe': (
+    tag: 'فعاليات ومعارض · السعودية',
+    description:
+        'توليت تطوير التطبيق بالكامل باستخدام Flutter من البداية وحتى الإطلاق، '
+        'مع التنسيق المباشر مع فريق المشروع لتصميم تجربة مستخدم '
+        'تناسب طبيعة الفعالية ومتطلباتها، '
+        'والعمل على تكامل التطبيق مع خدمات Backend APIs.',
+  ),
+
+  'insta-elsouq': (
+    tag: 'تجارة إلكترونية · خدمات',
+    description:
+        'تطبيق يجمع العملاء ومقدمي الخدمات في منصة واحدة، '
+        'ويتيح البحث عن الخدمات القريبة باستخدام الخرائط، '
+        'ومتابعة الطلبات، وتسجيل الدخول بحسابات التواصل الاجتماعي، '
+        'واستقبال الإشعارات الفورية.',
+  ),
+
+  'sareea-driver': (
+    tag: 'توصيل · خدمات لوجستية',
+    description:
+        'تطوير نظام لتتبع مواقع السائقين باستخدام GPS '
+        'حتى أثناء عمل التطبيق في الخلفية، '
+        'مع تحديث حالة التوصيل لحظيًا. '
+        'تم التركيز على استقرار التتبع عند انتقال التطبيق '
+        'بين حالاته المختلفة وتقليل استهلاك البطارية '
+        'خلال فترات العمل الطويلة.',
+  ),
+
+  'observer-iraq': (
+    tag: 'أخبار · محتوى رقمي',
+    description:
+        'تطبيق إخباري يعرض الأخبار حسب التصنيفات المختلفة، '
+        'مع استخدام Caching لتسريع عرض المحتوى '
+        'وإتاحة قراءة الأخبار المحفوظة دون اتصال بالإنترنت.',
+  ),
+
+  'cinderella': (
+    tag: 'تعارف وزواج',
+    description:
+        'عملت على تحسين استقرار التطبيق ومعالجة مشكلات الأداء، '
+        'بما يشمل تحسين Rendering، وإصلاح Memory Leaks، '
+        'وتقليل طلبات الشبكة غير الضرورية '
+        'لتحسين سرعة التطبيق واستجابته.',
+  ),
+};
+
+List<Project> projectsFor(AppLocale locale) {
+  if (locale == AppLocale.en) return projects;
+  return [
+    for (final p in projects) p.translated(tag: _arTexts[p.slug]!.tag, description: _arTexts[p.slug]!.description),
+  ];
+}
