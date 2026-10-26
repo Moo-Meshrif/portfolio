@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "jaspr serve",
+      "type": "shell",
+      "command": "export PATH=/Users/mac/fvm/versions/3.47.2/bin:$HOME/.pub-cache/bin:$PATH && jaspr serve",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting",
+          "endsPattern": "Serving at|localhost:8080"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ]
+}
