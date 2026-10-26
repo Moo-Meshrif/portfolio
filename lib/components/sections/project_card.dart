@@ -82,8 +82,8 @@ class ProjectCard extends StatelessComponent {
       border: Border.all(style: .solid, color: Palette.borderOutline, width: 1.px),
     ),
     css('.project-card__media').styles(
-      position: Position.relative(),
       display: .grid,
+      position: Position.relative(),
       gap: .all(8.px),
       raw: {'grid-template-columns': 'repeat(3, 1fr)'},
     ),
@@ -97,7 +97,6 @@ class ProjectCard extends StatelessComponent {
     css('.project-card__placeholder').styles(
       display: .flex,
       width: 100.percent,
-      raw: {'aspect-ratio': '9 / 19', 'box-sizing': 'border-box', 'min-width': '0', 'font-size': '10px'},
       padding: .all(4.px),
       border: Border.all(style: .dashed, color: Palette.borderDashed, width: 1.px),
       radius: .circular(Radii.placeholder),
@@ -106,21 +105,22 @@ class ProjectCard extends StatelessComponent {
       color: Palette.textMuted,
       textAlign: .center,
       textTransform: .none,
+      raw: {'aspect-ratio': '9 / 19', 'box-sizing': 'border-box', 'min-width': '0', 'font-size': '10px'},
     ),
     css('.project-card--links').styles(raw: {'cursor': 'pointer', 'outline': 'none'}),
     css('.project-card--links:focus-visible').styles(
       border: Border.all(style: .solid, color: Palette.accent, width: 1.px),
     ),
     css('.project-card__overlay').styles(
-      position: Position.absolute(top: 0.px, right: 0.px, bottom: 0.px, left: 0.px),
       display: .flex,
+      position: Position.absolute(top: 0.px, right: 0.px, bottom: 0.px, left: 0.px),
+      radius: .circular(Radii.placeholder),
       flexDirection: .column,
       justifyContent: .center,
       alignItems: .center,
       gap: .all(10.px),
-      radius: .circular(Radii.placeholder),
       color: Palette.textPrimary,
-      fontSize: 12.px,
+      fontSize: 13.px,
       raw: {
         'background': 'rgba(13,16,20,.82)',
         'backdrop-filter': 'blur(4px)',
@@ -143,8 +143,8 @@ class ProjectCard extends StatelessComponent {
       fontSize: 13.px,
     ),
     css('.project-card__store-btn:hover, .project-card__store-btn:focus-visible').styles(
-      backgroundColor: Palette.accent,
       color: Palette.onAccent,
+      backgroundColor: Palette.accent,
     ),
     css('.project-card__body').styles(display: .flex, flexDirection: .column, gap: .all(12.px), flex: Flex(grow: 1)),
     css(
@@ -164,7 +164,7 @@ class ProjectCard extends StatelessComponent {
       ),
       color: Palette.textMuted,
       fontFamily: Fonts.mono,
-      fontSize: 12.px,
+      fontSize: 13.px,
     ),
     css('.project-card__stores a:hover').styles(color: Palette.accent),
   ];

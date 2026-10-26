@@ -36,7 +36,7 @@ class SectionHeading extends StatelessComponent {
       flexWrap: .wrap,
       alignItems: .baseline,
       gap: .all(16.px),
-      fontSize: const Unit.expression('clamp(36px, 4.5vw, 56px)'),
+      fontSize: const Unit.expression('clamp(28px, 4.5vw, 56px)'),
       letterSpacing: const Unit.expression('-0.02em'),
       lineHeight: 1.05.em,
     ),

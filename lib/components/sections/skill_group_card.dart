@@ -25,7 +25,7 @@ class SkillGroupCard extends StatelessComponent {
       margin: .only(bottom: 16.px),
       color: Palette.textMuted,
       fontFamily: Fonts.mono,
-      fontSize: 12.px,
+      fontSize: 13.px,
       fontWeight: .w500,
       letterSpacing: const Unit.expression('0.08em'),
     ),

@@ -45,7 +45,7 @@ List<StyleRule> get globalStyles => [
   ),
   css('.mono').styles(
     fontFamily: Fonts.mono,
-    fontSize: 12.px,
+    fontSize: 13.px,
     fontWeight: .w500,
     textTransform: .upperCase,
     letterSpacing: _labelSpacing,

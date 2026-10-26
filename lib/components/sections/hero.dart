@@ -64,7 +64,7 @@ class Hero extends StatelessComponent {
     ),
     css('.hero__copy').styles(raw: {'grid-column': 'span 1', 'min-width': '0'}),
     css('.hero h1').styles(
-      fontSize: const Unit.expression('clamp(38px, 5.4vw, 76px)'),
+      fontSize: const Unit.expression('clamp(30px, 5.4vw, 76px)'),
       letterSpacing: const Unit.expression('-0.03em'),
       lineHeight: 1.02.em,
       raw: {'text-wrap': 'balance'},

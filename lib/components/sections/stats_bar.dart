@@ -38,7 +38,7 @@ class StatsBar extends StatelessComponent {
     css('.stats__item').styles(display: .flex, flexDirection: .column, gap: .all(8.px)),
     css('.stats__value').styles(
       fontFamily: Fonts.heading,
-      fontSize: 48.px,
+      fontSize: const Unit.expression('clamp(34px, 8vw, 48px)'),
       fontWeight: .w700,
       letterSpacing: const Unit.expression('-0.02em'),
       lineHeight: 1.05.em,
