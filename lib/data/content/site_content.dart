@@ -10,7 +10,8 @@ const emailUrl = 'mailto:$email';
 const githubUrl = 'https://github.com/Moo-Meshrif';
 const linkedinUrl = 'https://linkedin.com/in/mohamed-meshrif';
 const cvUrl = 'cv.pdf';
-const ogImagePath = 'og.png';
+const siteUrl = 'https://moo-meshrif.github.io/portfolio/';
+const ogImageUrl = '${siteUrl}images/og.png';
 
 const navLinks = <({String label, String href})>[
   (label: 'Work', href: '#work'),

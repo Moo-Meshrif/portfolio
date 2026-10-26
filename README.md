@@ -20,7 +20,7 @@ Deploying under a sub-path (project GitHub Pages site):
 
 - **Screenshots**: drop images (png/jpg/webp) into `web/images/projects/<slug>/`. The first file (alphabetical) is used; otherwise a dashed placeholder shows.
 - **CV**: replace `web/cv.pdf`.
-- **Social image**: add `web/og.png` (1200×630).
+- **Social image**: `web/images/og.png` (1200×627).
 - **Favicon**: replace `web/favicon.ico`.
 
 ## Add a project
